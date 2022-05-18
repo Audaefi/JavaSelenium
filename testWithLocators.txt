@@ -1,0 +1,33 @@
+testWithLocators.java
+
+WebDriver driver;
+
+@Test
+public void testSite() {
+	driver.get("https://google.com");
+	
+	// No.1
+ 	// driver.findElement(By.name("q")).sendKeys("Hongik University", Keys.ENTER);
+
+	// No.2
+	// WebElement searchbox = driver.findElement(By.name("q"));
+	// searchbox.sendKeys("Hongik University", Keys.ENTER);
+}
+
+@Before
+public void init() {
+	//WebDriverManager.chromedriver().setup();
+	//driver = new ChromeDriver();
+
+	WebDriverManager.firefoxdriver().setup();
+	driver = new FirefoxDriver();
+
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+	driver.manage().timeouts().scriptTimeout(Duration.ofMinutes(2));
+	driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
+}
+
+@After
+public void done() {
+	//driver.close(); // cf. driver.guit()
+}
